@@ -1,6 +1,8 @@
 require('dotenv').config();
+
 const express = require('express');
 const ejs = require('ejs');
+const client = require('./apiClient.js');
 
 const app = express();
 
@@ -11,8 +13,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/search-actors', (req, res) => {
-  console.log('Actor 1:', req.query.actor1);
-  console.log('Actor 2:', req.query.actor2);
+  console.log('Actor 1:', client.getActorData(req.query.actor1));
+  console.log('Actor 2:', client.getActorData(req.query.actor2));
   res.send('Search functionality coming soon!');
 });
 
