@@ -19,27 +19,22 @@ app.get('/search-actors', async (req, res) => {
     getActorData(req.query.actor2)
   ]);
 
-  console.log('Actor 1:', actor1Data);
-  console.log('Actor 2:', actor2Data);
+  console.log('Actor 1:', actor1Data[0]?.name);
+  console.log('Actor 2:', actor2Data[0]?.name);
 
   const actor1ID = actor1Data[0].id;
   const actor2ID = actor2Data[0].id;
 
-  console.log('Actor1 ID:', actor1ID);
-  console.log('Actor2 ID:', actor2ID);
+  const [actor1Credits, actor2Credits] = await Promise.all([
+    getActorCredits(actor1ID),
+    getActorCredits(actor2ID)
+  ]);
 
-  // const [actor1CreditsData, actor2CreditsData] = await Promise.all([
-  //   getActorCredits(actor1ID),
-  //   getActorCredits(actor2ID)
-  // ]);
+  const commonCredits = findCommonCredits(actor1Credits, actor2Credits);
+  
+  console.log('Common projects:', commonCredits);
 
-  // console.log('Actor 1 credits:', actor1CreditsData);
-  // console.log('Actor 2 credits:', actor2CreditsData);
-
-  const commonCredits = await findCommonCredits(actor1ID, actor2ID)
-  console.log(commonCredits)
-
-  res.send('Search functionality coming soon!');
+  res.json(commonCredits);
 });
 
 app.listen(3000, () => {
