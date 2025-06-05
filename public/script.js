@@ -1,4 +1,4 @@
-console.log(">> in script.js")
+import { buildResultsList } from './domHelpers.js';
 
 const form = document.getElementById('actor-search');
 
@@ -16,5 +16,12 @@ form.addEventListener('submit', async (event) => {
   const response = await fetch(url);
   const json = await response.json();
 
+  const resultsDiv = document.getElementById('results')
+  resultsDiv.innerHTML = '';
+
   console.log('Results from server:', json);
+
+  const projectList = buildResultsList(json);
+
+  resultsDiv.appendChild(projectList)
 });

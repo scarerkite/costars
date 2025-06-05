@@ -16,6 +16,7 @@
     "express": "^5.1.0"
   },
   "devDependencies": {
+    "jsdom": "^26.1.0",
     "undici": "^7.10.0"
   }
 }
