@@ -16,29 +16,62 @@ app.get('/', (req, res) => {
 });
 
 app.get('/search-actors', async (req, res) => {
-  const [actor1Data, actor2Data] = await Promise.all([
-    getActorData(req.query.actor1),
-    getActorData(req.query.actor2)
-  ]);
+  try {   
+    if (req.query.actor1 === undefined || req.query.actor2 === undefined) {
+      return res.status(400).json({ error: '2 actors are required' });
+    }
+    
+    // Check if either parameter is just whitespace
+    const actor1 = req.query.actor1.trim();
+    const actor2 = req.query.actor2.trim();
+    
+    if (actor1.length === 0 || actor2.length === 0) {
+      return res.status(400).json({ error: 'Actor names cannot be empty' });
+    }
+    
+    // Check length limits (prevent potential DoS attacks)
+    if (actor1.length > 100 || actor2.length > 100) {
+      return res.status(400).json({ error: 'Actor names must be less than 100 characters' });
+    }
+    
+    const sanitize = (str) => str.replace(/[<>]/g, '');
+    const cleanActor1 = sanitize(actor1);
+    const cleanActor2 = sanitize(actor2);
 
-  console.log('Actor 1:', actor1Data[0]?.name);
-  console.log('Actor 2:', actor2Data[0]?.name);
+    const [actor1Data, actor2Data] = await Promise.all([
+      getActorData(cleanActor1),
+      getActorData(cleanActor2)
+    ]);
 
-  const actor1ID = actor1Data[0].id;
-  const actor2ID = actor2Data[0].id;
+    if (actor1Data.length === 0) {
+      return res.status(200).json({ error: `Actor '${cleanActor1}' not found` });
+    }
+    
+    if (actor2Data.length === 0) {
+      return res.status(200).json({ error: `Actor '${cleanActor2}' not found` });
+    }
 
-  const [actor1Credits, actor2Credits] = await Promise.all([
-    getActorCredits(actor1ID),
-    getActorCredits(actor2ID)
-  ]);
+    const actor1ID = actor1Data[0].id;
+    const actor2ID = actor2Data[0].id;
 
-  const commonCredits = findCommonCredits(actor1Credits, actor2Credits);
-  
-  console.log('Common projects:', commonCredits);
+    const [actor1Credits, actor2Credits] = await Promise.all([
+      getActorCredits(actor1ID),
+      getActorCredits(actor2ID)
+    ]);
 
-  res.json(commonCredits);
+    const commonCredits = findCommonCredits(actor1Credits, actor2Credits);
+    
+    res.json(commonCredits);
+  } catch (error) {
+    console.error('Server error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
-app.listen(3000, () => {
-  console.log('Server started on port 3000');
-});
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(3000, () => {
+    console.log('Server started on port 3000');
+  });
+}
+
+export default app;
