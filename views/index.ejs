@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Co-stars App</title>
+    <link rel="stylesheet" href="/styles.css">
   </head>
 
   <body>
-    <h1>Welcome to Co-stars!</h1>
-    <p>The app where you can discover which TV shows and movies 2 actors have in common.</p>
-    <%- include('partials/form') %>
-    <div id="results"></div>
-    <footer>
-      <p>All data provided by <a href="https://www.themoviedb.org/">TMDB</a></p>
-    </footer>
+    <div class="container">
+      <div>
+        <h1>Welcome to Co-stars!</h1>
+        <p>The app where you can discover which TV shows and movies 2 actors have in common.</p>
+        <%- include('partials/form') %>
+        <div id="results"></div>
+      </div>
+    </div>
+    <div>
+      <footer>
+        <p>All data provided by <a href="https://www.themoviedb.org/">TMDB</a></p>
+      </footer>
+    </div>
     <script type="module" src="/script.js"></script>
   </body>
 </html>
