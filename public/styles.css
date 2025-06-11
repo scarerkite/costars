@@ -96,10 +96,14 @@ body {
 
 h1 {
   color: var(--neon-cyan);
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 h2 {
   color: var(--neon-pink);
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .container {
@@ -115,8 +119,40 @@ h2 {
   border: solid 3px var(--neon-pink); 
   border-radius: 10px;
   padding: 30px;
+  margin-top: 20px;
 }
 
 p {
   color: var(--neon-cyan);
+}
+
+label {
+  color: var(--neon-cyan);
+  text-transform: uppercase;
+  display: block;
+}
+
+input {
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 1rem;
+  border: solid 2px var(--electric-blue);
+  background-color: var(--dark-bg);
+}
+
+button {
+  width: 100%;
+  display: block;
+  border-radius: 25px;
+  text-transform: uppercase;
+  padding: 15px 0;
+}
+
+footer {
+  a {
+    color: var(--neon-pink);
+    text-decoration: none;
+  }
 }
