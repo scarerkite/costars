@@ -135,6 +135,48 @@ h2 {
   margin: 20px 0;
 }
 
+li.project-card {
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 1rem;
+  border: solid 2px var(--neon-purple);
+  color: var(--neon-pink);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+
+  a {
+    color: var(--neon-pink);
+    text-decoration: none;
+    display: block;
+  }
+}
+
+.project-title {
+  color: var(--neon-pink);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.project-info {
+  color: var(--neon-cyan);
+  font-size: 0.9rem;
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 p {
   color: var(--neon-cyan);
   font-size: 1.1rem;
