@@ -90,7 +90,7 @@ h6 {
 }
 
 body {
-  font-family: 'Orbitron', monospace;
+  font-family: Monaco, Consolas, 'Courier New', monospace;
   background-color: var(--grid-color);
 }
 
@@ -116,20 +116,38 @@ h2 {
 
 #actor-search {
   width: 100%;
-  border: solid 3px var(--neon-pink); 
+  border: solid 2px var(--neon-pink); 
   border-radius: 10px;
   padding: 30px;
-  margin-top: 20px;
+  margin: 20px 0;
+}
+
+#results {
+  display: none;
+}
+
+#results.show {
+  display: block;
+  width: 100%;
+  border: solid 2px var(--neon-cyan);
+  border-radius: 10px;
+  padding: 30px;
+  margin: 20px 0;
 }
 
 p {
   color: var(--neon-cyan);
+  font-size: 1.1rem;
 }
 
 label {
   color: var(--neon-cyan);
   text-transform: uppercase;
   display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin: 2px;
 }
 
 input {
@@ -140,6 +158,10 @@ input {
   padding: 1rem;
   border: solid 2px var(--electric-blue);
   background-color: var(--dark-bg);
+  color: var(--neon-pink);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
 }
 
 button {
@@ -148,9 +170,16 @@ button {
   border-radius: 25px;
   text-transform: uppercase;
   padding: 15px 0;
+  background: linear-gradient(45deg, var(--neon-pink), var(--electric-blue));
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  cursor: pointer;
 }
 
 footer {
+  text-align: center;
   a {
     color: var(--neon-pink);
     text-decoration: none;

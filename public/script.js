@@ -24,7 +24,12 @@ form.addEventListener('submit', async (event) => {
     const json = await response.json();
   
     const resultsDiv = document.getElementById('results')
+    // Clear previous results if any
     resultsDiv.innerHTML = '';
+    resultsDiv.classList.remove("show");
+
+    // Add visible results box
+    resultsDiv.classList.add("show");
   
     console.log('Results from server:', json);
 
