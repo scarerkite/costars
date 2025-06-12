@@ -27,8 +27,11 @@ describe('buildResultsList', () => {
     const result = buildResultsList(projects);
     
     const firstItem = result.querySelector('li');
+    const title = firstItem.querySelector('.project-title').textContent;
+    const info = firstItem.querySelector('.project-info').textContent;
 
-    assert.strictEqual(firstItem.textContent, 'The King\'s Speech (movie), 2010');
+    assert.strictEqual(title, 'The King\'s Speech');
+    assert.strictEqual(info, '2010 • Movie');
   });
 
   it('should show "No collaborations found" when projects array is empty', () => {
@@ -55,8 +58,13 @@ describe('buildResultsList', () => {
       { title: "Some Movie", media_type: "movie", year: null, id: 123 }
     ];
     const result = buildResultsList(projects);
+    
     const firstItem = result.querySelector('li');
-    assert.strictEqual(firstItem.textContent, 'Some Movie (movie)');
+    const title = firstItem.querySelector('.project-title').textContent;
+    const info = firstItem.querySelector('.project-info').textContent;
+
+    assert.strictEqual(title, 'Some Movie');
+    assert.strictEqual(info, 'Unknown • Movie');
   });
 
   it('should safely display movie titles with HTML characters', () => {
