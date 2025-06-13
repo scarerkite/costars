@@ -28,6 +28,36 @@ export function buildResultsList(projects) {
       }
     }
   });
+
+  // Sort each group
+  const sortByYearThenTitle = (a, b) => {
+    const yearA = a.year ? parseInt(a.year) : 0;
+    const yearB = b.year ? parseInt(b.year) : 0;
+    
+    // If both have years, sort by year (newest first)
+    if (yearA && yearB) {
+      if (yearA !== yearB) {
+        return yearB - yearA; // Descending order
+      }
+      // Same year, sort alphabetically by title
+      return a.title.localeCompare(b.title);
+    }
+    
+    // Projects with years come before those without
+    if (yearA && !yearB) return -1;
+    if (!yearA && yearB) return 1;
+    
+    // Both without years, sort alphabetically by title
+    return a.title.localeCompare(b.title);
+  };
+
+  const sortAlphabetically = (a, b) => {
+    return a.title.localeCompare(b.title);
+  };
+
+  groups.movies.sort(sortByYearThenTitle);
+  groups.tv.sort(sortByYearThenTitle);
+  groups.appearances.sort(sortAlphabetically);
   
   const container = document.createElement('div');
 
