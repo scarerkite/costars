@@ -26,7 +26,7 @@ export function buildResultsList(projects) {
     };
 
     li.innerHTML = `
-      <a href="https://www.themoviedb.org/${project.media_type}/${project.id}" class="card-link">
+      <a target="_blank" href="https://www.themoviedb.org/${project.media_type}/${project.id}" class="card-link">
         <div class="project-title">${escapeHtml(project.title)}</div>
         <div class="project-info">${year} • ${media_type}</div>
       </a>
