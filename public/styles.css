@@ -93,6 +93,9 @@ h6 {
   --grid-color: #333;
   --text-glow: 0 0 10px currentColor;
   --box-glow: 0 0 20px rgba(255, 0, 128, 0.3);
+  --step-5: clamp(1.5768rem, 1.0464rem + 2.6521vw, 3.4332rem);
+  --step-2: clamp(1.1074rem, 0.9216rem + 0.9291vw, 1.7578rem);
+  --step-0: clamp(0.875rem, 0.8036rem + 0.3571vw, 1.125rem);
 }
 
 body {
@@ -142,10 +145,10 @@ body::after {
 }
 
 h1 {
-  font-size: 3.5rem;
+  font-size: var(--step-5);
   font-weight: 900;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: clamp(0.5rem, 2vw, 1rem);
   color: var(--neon-cyan);
   text-shadow:
     0 0 5px var(--neon-cyan),
@@ -167,8 +170,8 @@ h1 {
 
 h2 {
   color: var(--neon-pink);
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
+  font-size: var(--step-2);
+  margin-bottom: clamp(0.75rem, 3vw, 1.5rem);
   text-align: center;
   text-shadow:
     0 0 5px var(--neon-pink),
@@ -190,8 +193,8 @@ h2 {
   width: 100%;
   border: solid 2px var(--neon-pink); 
   border-radius: 10px;
-  padding: 2rem;
-  margin: 1.5rem 0;
+  padding: clamp(1rem, 4vw, 2rem);
+  margin: clamp(1rem, 3vw, 1.5rem) 0;
   box-shadow:
     var(--box-glow),
     inset 0 0 20px rgba(255, 0, 128, 0.1);
@@ -283,7 +286,8 @@ ul {
 
 p {
   color: var(--neon-cyan);
-  font-size: 1.1rem;
+  font-size: var(--step-0);
+  line-height: 1.4;
 }
 
 label {
