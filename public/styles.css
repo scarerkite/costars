@@ -95,6 +95,7 @@ h6 {
   --box-glow: 0 0 20px rgba(255, 0, 128, 0.3);
   --step-5: clamp(1.5768rem, 1.0464rem + 2.6521vw, 3.4332rem);
   --step-2: clamp(1.1074rem, 0.9216rem + 0.9291vw, 1.7578rem);
+  --step-1: clamp(0.9844rem, 0.8638rem + 0.6027vw, 1.4063rem);
   --step-0: clamp(0.875rem, 0.8036rem + 0.3571vw, 1.125rem);
 }
 
@@ -175,6 +176,17 @@ h2 {
   font-size: var(--step-2);
   margin-bottom: clamp(0.75rem, 3vw, 1.5rem);
   text-align: center;
+  text-shadow:
+    0 0 5px var(--neon-pink),
+    0 0 20px var(--neon-pink),
+    0 0 40px var(--neon-pink);
+  letter-spacing: 0.05em;
+}
+
+h3 {
+  color: var(--neon-pink);
+  font-size: var(--step-1);
+  margin-bottom: clamp(0.5rem, 4vw, 1rem);
   text-shadow:
     0 0 5px var(--neon-pink),
     0 0 20px var(--neon-pink),
@@ -377,4 +389,14 @@ footer {
     color: var(--neon-pink);
     text-decoration: none;
   }
+}
+
+.disclaimer {
+  font-size: 0.8rem;
+  color: var(--neon-pink);
+  font-style: italic;
+  margin: 0.5rem 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
 }
