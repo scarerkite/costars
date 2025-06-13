@@ -11,9 +11,6 @@ form.addEventListener('submit', async (event) => {
   const submitButton = form.querySelector('button[type="submit"]');
   const originalButtonText = submitButton.textContent;
 
-  console.log(`From JS - Actor1: ${actor1Name}`);
-  console.log(`From JS - Actor2: ${actor2Name}`);
-
   submitButton.disabled = true;
   submitButton.textContent = 'Searching...';
 
@@ -31,8 +28,6 @@ form.addEventListener('submit', async (event) => {
     // Add visible results box
     resultsDiv.classList.add("show");
   
-    console.log('Results from server:', json);
-
     if (json.error) {
       const errorP = document.createElement('p');
       errorP.textContent = json.error;
