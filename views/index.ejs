@@ -15,8 +15,27 @@
         <%- include('partials/form') %>
         <div id="results"></div>
       </div>
-      <footer>
-        <p>All data provided by <a href="https://www.themoviedb.org/">TMDB</a></p>
+      <footer class="terminal-footer">
+        <div class="terminal-header">SYSTEM_INFO</div>
+        <div class="terminal-line">
+          <span class="terminal-prompt">></span>
+          <span class="terminal-label">Data_source:</span>
+          <span class="terminal-value"><a target="_blank" href="https://www.themoviedb.org/" class="terminal-link">TMDB</a></span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-prompt">></span>
+          <span class="terminal-label">Built_by:</span>
+          <span class="terminal-value"><a target="_blank" href="https://github.com/scarerkite/costars" class="terminal-link">scarerkite</a></span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-prompt">></span>
+          <span class="terminal-label">Behind_the_scenes:</span>
+          <span class="terminal-value"><a target="_blank" href="https://sarahcknight.co.uk/posts/costars/" class="terminal-link">making_of.md</a></span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-prompt">></span>
+          <span class="cursor"></span>
+        </div>
       </footer>
     </div>
     <script type="module" src="/script.js"></script>
