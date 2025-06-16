@@ -4,12 +4,24 @@ import express from 'express';
 import ejs from 'ejs';
 import { getActorData, getActorCredits } from './apiClient.js';
 import { findCommonCredits } from './movieMatcher.js';
+import rateLimit from "express-rate-limit";
 
 const app = express();
+
+const searchLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 10,                 // 10 searches per minute
+  message: {
+    error: "Search rate limit exceeded. Please wait a moment before searching again."
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
 app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
+app.use("/search-actors", searchLimiter);
 
 app.get('/', (req, res) => {
   res.render('index');
