@@ -7,6 +7,7 @@ import { findCommonCredits } from './movieMatcher.js';
 import rateLimit from "express-rate-limit";
 
 const app = express();
+app.set("trust proxy", true);
 
 const searchLimiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
