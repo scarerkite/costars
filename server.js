@@ -22,6 +22,20 @@ app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
 app.use("/search-actors", searchLimiter);
+app.use((req, _res, next) => {
+  const timestamp = new Date().toISOString();
+  const referrer = req.get('Referer') || 'Direct';
+  const userAgent = req.get('User-Agent') || 'Unknown';
+  
+  console.log(`${timestamp} - ${req.method} ${req.url}`);
+  if (referrer !== 'Direct') {
+    console.log(`Referrer: ${referrer}`);
+  }
+  console.log(`User-Agent: ${userAgent.substring(0, 100)}`); // Truncate long user agents
+  console.log('---');
+  
+  next();
+});
 
 app.get('/', (req, res) => {
   res.render('index');
